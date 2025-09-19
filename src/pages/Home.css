@@ -1,0 +1,37 @@
+.home h1 {
+  font-size: 5rem;
+}
+
+.home h2{
+    margin-top: 30px;
+}
+
+.home p {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+.home span{
+    font-weight: bold;
+    color: #ffdf00;
+}
+
+.home .amarillo {
+  color: #ffdf00;
+  font-weight: bold;
+}
+
+.home .subrayado {
+  text-decoration: underline;
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+  .home h1 {
+    font-size: 2.5rem;
+  }
+
+  .home p {
+    font-size: 1rem;
+  }
+}

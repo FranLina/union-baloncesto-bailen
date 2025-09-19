@@ -42,12 +42,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #ffdf00;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #e0c725;
 }
 button:focus,
 button:focus-visible {
@@ -64,7 +64,8 @@ button:focus-visible {
 /* contenido que empuja el footer */
 .content {
   flex: 1;
-  padding-top: 180px;
-  margin-bottom: 20px;
-  margin: 40px;
+  margin: 0 auto;
+  margin-top: 230px;
+  margin-bottom: 40px;
+  width: 80%;
 }

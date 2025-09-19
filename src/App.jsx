@@ -1,5 +1,5 @@
 import Equipos from "./pages/Equipos";
-import Menu from "./components/menu";
+import Menu from "./components/Menu";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import { Routes, Route, useLocation } from "react-router-dom";
