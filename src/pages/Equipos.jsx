@@ -6,7 +6,10 @@ export default function Equipos() {
 
   useEffect(() => {
     async function cargarEquipos() {
-      const { data, error } = await supabase.from("equipos").select("*");
+      const { data, error } = await supabase
+        .from("equipos")
+        .select("*")
+        .eq("club", 1);
       if (error) {
         console.error("Error cargando equipos:", error.message);
       } else {
