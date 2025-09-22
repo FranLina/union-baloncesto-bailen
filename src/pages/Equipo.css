@@ -1,0 +1,13 @@
+.equipos-container {
+  padding: 2rem;
+  padding-top: 0;
+  text-align: center;
+}
+
+.equipos-grid {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}

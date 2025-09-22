@@ -25,7 +25,7 @@ export default function Menu() {
 
   return (
     <nav className={`navbar ${visible ? "show" : "hide"}`}>
-      <img className="navbar-logo" src="ubb-escudo.png" alt=""></img>
+      <img className="navbar-logo" src="/ubb-escudo.png" alt=""></img>
       <div className="hamburger" onClick={() => setMobileOpen(!mobileOpen)}>
         &#9776;
       </div>
@@ -37,13 +37,13 @@ export default function Menu() {
           <Link to="/equipos">Equipos</Link>
         </li>
         <li>
-          <Link to="/entrenamientos">Entrenamientos</Link>
+          <Link to="/cronicas">Crónicas</Link>
         </li>
         <li>
           <Link to="/partidos">Partidos</Link>
         </li>
         <li>
-          <Link to="/cronicas">Crónicas</Link>
+          <Link to="/entrenamientos">Entrenamientos</Link>
         </li>
       </ul>
     </nav>

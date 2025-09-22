@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import EquipoCard from "../components/EquipoCard";
+import "./Equipo.css";
 
 export default function Equipos() {
   const [equipos, setEquipos] = useState([]);
@@ -8,7 +10,7 @@ export default function Equipos() {
     async function cargarEquipos() {
       const { data, error } = await supabase
         .from("equipos")
-        .select("*")
+        .select(`id,nombre,categoria,sexo,foto_equipo,club (id,escudo)`)
         .eq("club", 1);
       if (error) {
         console.error("Error cargando equipos:", error.message);
@@ -20,18 +22,20 @@ export default function Equipos() {
   }, []);
 
   return (
-    <div>
-      <h1>Equipos</h1>
-      <ul>
+    <div className="equipos-container">
+      <h1>Nuestros equipos</h1>
+      <div className="equipos-grid">
         {equipos.map((eq) => (
-          <li key={eq.id}>
-            {eq.foto_url && (
-              <img src={eq.foto_url} alt={eq.nombre} width="50" />
-            )}
-            {eq.nombre} - {eq.categoria} - {eq.sexo}
-          </li>
+          <EquipoCard
+            key={eq.id}
+            id={eq.id}
+            nombre={eq.nombre}
+            categoria={eq.categoria}
+            sexo={eq.sexo}
+            foto={eq.foto_equipo}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

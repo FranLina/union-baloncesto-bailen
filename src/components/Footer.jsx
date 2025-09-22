@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container1">
-        <img className="footer-logo" src="ubb-escudo.png" alt=""></img>
+        <img className="footer-logo" src="/ubb-escudo.png" alt=""></img>
         <p>© 2025 Club de Baloncesto. Todos los derechos reservados.</p>
       </div>
       <div className="footer-container2">

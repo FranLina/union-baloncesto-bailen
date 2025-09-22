@@ -2,6 +2,9 @@ import Equipos from "./pages/Equipos";
 import Menu from "./components/Menu";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import EquipoDetalle from "./pages/EquipoDetalle";
+import Cronicas from "./pages/Cronicas";
+import CronicaDetalle from "./pages/CronicaDetalle";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageWrapper from "./lib/PageWrapper";
@@ -32,6 +35,14 @@ function App() {
               }
             />
             <Route
+              path="/equipos/:id"
+              element={
+                <PageWrapper>
+                  <EquipoDetalle />
+                </PageWrapper>
+              }
+            />
+            <Route
               path="/partidos"
               element={
                 <PageWrapper>
@@ -51,10 +62,18 @@ function App() {
               path="/cronicas"
               element={
                 <PageWrapper>
-                  <h2>Crónicas</h2>
+                  <Cronicas />
                 </PageWrapper>
               }
             />
+            <Route
+            path="/cronicas/:id"
+            element={
+              <PageWrapper>
+                <CronicaDetalle />
+              </PageWrapper>
+            }
+          />
           </Routes>
         </div>
       </AnimatePresence>
