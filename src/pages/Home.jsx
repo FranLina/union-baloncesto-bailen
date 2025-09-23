@@ -14,8 +14,7 @@ export default function Home() {
       </h2>
 
       <p>
-        La Unión Baloncesto Bailén nace de un proyecto emprendido en la
-        temporada 2010/2011, con el fin de consolidar un club serio que se
+        La Unión Baloncesto Bailén nace de un proyecto emprendido con el fin de consolidar un club serio que se
         interesara por cuidar del baloncesto y su práctica por la juventud de
         Bailén. Muchos son los padres y madres que han decidido unirse a
         nosotros para ayudarnos a formar un club competente, con ganas de

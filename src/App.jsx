@@ -8,6 +8,7 @@ import CronicaDetalle from "./pages/CronicaDetalle";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageWrapper from "./lib/PageWrapper";
+import Patrocinadores from "./components/Patrocinadores";
 
 function App() {
   const location = useLocation();
@@ -67,16 +68,17 @@ function App() {
               }
             />
             <Route
-            path="/cronicas/:id"
-            element={
-              <PageWrapper>
-                <CronicaDetalle />
-              </PageWrapper>
-            }
-          />
+              path="/cronicas/:id"
+              element={
+                <PageWrapper>
+                  <CronicaDetalle />
+                </PageWrapper>
+              }
+            />
           </Routes>
         </div>
       </AnimatePresence>
+      <Patrocinadores />
       <Footer />
     </div>
   );
