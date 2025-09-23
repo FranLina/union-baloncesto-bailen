@@ -34,11 +34,13 @@ export default function EquipoDetalle() {
         {equipo.nombre} {equipo.categoria} {equipo.sexo}
       </h1>
       <div className="container-equipo">
-        <img
-          src={equipo.foto_equipo}
-          alt={equipo.nombre}
-          className="detalle-foto"
-        />
+        {equipo.foto_equipo && (
+          <img
+            src={equipo.foto_equipo}
+            alt={equipo.nombre}
+            className="detalle-foto"
+          />
+        )}
         <div className="detalle-info">
           <p>{equipo.descripcion}</p>
         </div>

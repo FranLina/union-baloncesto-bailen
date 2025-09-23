@@ -10,7 +10,7 @@ export default function EquipoCard({ id, nombre, categoria, sexo, foto }) {
       onClick={() => navigate(`/equipos/${id}`)}
       style={{ cursor: "pointer" }}
     >
-      <img src={foto} alt={`Foto de ${nombre}`} className="equipo-foto" />
+      <img src={foto || "/ubb-escudo.png"} alt={`Foto de ${nombre}`} className="equipo-foto" />
       <div className="equipo-info">
         <h3>{nombre}</h3>
         <p>

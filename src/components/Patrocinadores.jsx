@@ -26,7 +26,13 @@ const Patrocinadores = () => {
     <div className="patrocinadores">
       <h2>Nuestros Patrocinadores</h2>
       <div className="slider">
-        <div className="slide-track">
+        <div
+          className="slide-track"
+          style={{
+            width: `${sponsors.length * 2 * 250}px`,
+            animationDuration: `${sponsors.length * 3}s`,
+          }}
+        >
           {[...sponsors, ...sponsors].map((sponsor, index) => (
             <div key={index} className="slide">
               <a
