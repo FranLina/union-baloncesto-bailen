@@ -14,10 +14,7 @@ export default function EquipoCard({ id, nombre, categoria, sexo, foto }) {
       <div className="equipo-info">
         <h3>{nombre}</h3>
         <p>
-          <strong>Categoría:</strong> {categoria}
-        </p>
-        <p>
-          <strong>Sexo:</strong> {sexo}
+          <strong>Categoría:</strong> {categoria} {sexo}
         </p>
       </div>
     </div>

@@ -9,6 +9,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageWrapper from "./lib/PageWrapper";
 import Patrocinadores from "./components/Patrocinadores";
+import Partidos from "./pages/Partidos";
 
 function App() {
   const location = useLocation();
@@ -47,7 +48,7 @@ function App() {
               path="/partidos"
               element={
                 <PageWrapper>
-                  <h2>Partidos próximamente</h2>
+                  <Partidos />
                 </PageWrapper>
               }
             />

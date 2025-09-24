@@ -1,0 +1,99 @@
+.lista-partidos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background: #fff;
+
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  max-width: 720px;
+}
+
+.card h4 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  color: red;
+  padding: 1rem;
+}
+
+.sin-partido {
+  color: #666;
+  padding: 1rem;
+}
+
+.partido-detalle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem;
+}
+
+.equipo {
+  text-align: center;
+}
+
+.escudo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+.equipo-nombre {
+  max-width: 160px;
+  font-weight: 600;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.vs {
+  text-align: center;
+  min-width: 60px;
+}
+
+.vs-text {
+  font-weight: 700;
+}
+
+.resultado {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.resultado .ganador {
+  color: #ffdf00; 
+}
+
+.fecha {
+  font-size: 12px;
+  color: #444;
+  margin-top: 6px;
+}
+
+.pabellon {
+  background-color: #ffdf00;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 10px 10px;
+  margin-top: 8px;
+  color: white;
+  text-align: center;
+}
+
+.pabellon span {
+  color: white;
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+  .resultado{
+    font-size: 1rem;
+  }
+}

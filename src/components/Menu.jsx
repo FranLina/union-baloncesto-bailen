@@ -23,6 +23,10 @@ export default function Menu() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = () => {
+    setMobileOpen(false); // cerrar menú
+  };
+
   return (
     <nav className={`navbar ${visible ? "show" : "hide"}`}>
       <img className="navbar-logo" src="/ubb-escudo.png" alt=""></img>
@@ -31,19 +35,29 @@ export default function Menu() {
       </div>
       <ul className={`navbar-links ${mobileOpen ? "open" : ""}`}>
         <li>
-          <Link to="/">Inicio</Link>
+          <Link to="/" onClick={handleLinkClick}>
+            Inicio
+          </Link>
         </li>
         <li>
-          <Link to="/equipos">Equipos</Link>
+          <Link to="/equipos" onClick={handleLinkClick}>
+            Equipos
+          </Link>
         </li>
         <li>
-          <Link to="/cronicas">Crónicas</Link>
+          <Link to="/cronicas" onClick={handleLinkClick}>
+            Crónicas
+          </Link>
         </li>
         <li>
-          <Link to="/partidos">Partidos</Link>
+          <Link to="/partidos" onClick={handleLinkClick}>
+            Partidos
+          </Link>
         </li>
         <li>
-          <Link to="/entrenamientos">Entrenamientos</Link>
+          <Link to="/entrenamientos" onClick={handleLinkClick}>
+            Entrenamientos
+          </Link>
         </li>
       </ul>
     </nav>

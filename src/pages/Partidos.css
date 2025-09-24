@@ -1,0 +1,12 @@
+.contenedor-partidos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+  .contenedor-partidos h1 {
+    font-size: 1.2rem;
+  }
+}

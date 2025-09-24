@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  FaInstagram,
-  FaFacebook,
-  FaTwitter,
-  FaYoutube,
-  FaTwitch,
-} from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaYoutube, FaTwitch } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import "./Footer.css";
 
 const Footer = () => {
@@ -40,7 +35,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaTwitter />
+            <FaXTwitter />
           </a>
           <a
             href="https://www.youtube.com/@Uni%C3%B3nBaloncestoBail%C3%A9n"
