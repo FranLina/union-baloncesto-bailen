@@ -53,14 +53,6 @@ function App() {
               }
             />
             <Route
-              path="/entrenamientos"
-              element={
-                <PageWrapper>
-                  <h2>Entrenamientos próximamente</h2>
-                </PageWrapper>
-              }
-            />
-            <Route
               path="/cronicas"
               element={
                 <PageWrapper>

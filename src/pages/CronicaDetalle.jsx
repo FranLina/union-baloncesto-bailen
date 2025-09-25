@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
+import FormatearHtmlToTexto from "../components/FormatearHtmlToTexto";
 import "./CronicaDetalle.css";
 
 export default function CronicaDetalle() {
@@ -31,7 +32,8 @@ export default function CronicaDetalle() {
     <div className="cronica-detalle">
       <h1>{cronica.titulo}</h1>
       <h3>{new Date(cronica.fecha).toLocaleDateString("es-ES")}</h3>
-      <p>{cronica.contenido}</p>
+      
+      <FormatearHtmlToTexto contenido={cronica.contenido}/>
 
       <div className="fotos">
         <Swiper

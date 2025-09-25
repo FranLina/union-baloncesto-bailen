@@ -54,11 +54,6 @@ export default function Menu() {
             Partidos
           </Link>
         </li>
-        <li>
-          <Link to="/entrenamientos" onClick={handleLinkClick}>
-            Entrenamientos
-          </Link>
-        </li>
       </ul>
     </nav>
   );

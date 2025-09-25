@@ -6,6 +6,11 @@ import "./Cronicas.css";
 export default function Cronicas() {
   const [cronicas, setCronicas] = useState([]);
 
+  function stripHtml(html) {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent || "";
+  }
+
   useEffect(() => {
     const fetchCronicas = async () => {
       const { data, error } = await supabase
@@ -31,7 +36,7 @@ export default function Cronicas() {
             <p className="fecha">
               {new Date(cr.fecha).toLocaleDateString("es-ES")}
             </p>
-            <p>{cr.contenido.slice(0, 150)}...</p>
+            <p>{stripHtml(cr.contenido).slice(0, 150)}...</p>
             <Link to={`/cronicas/${cr.id}`}>Leer más</Link>
           </div>
         ))}

@@ -21,13 +21,13 @@
 }
 
 .navbar-logo {
-  margin-left: 20rem;
+  margin-left: 25rem;
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 5rem;
+  gap: 7rem;
   margin-left: 8rem;
 }
 

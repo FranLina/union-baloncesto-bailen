@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { TbBrandYoutubeFilled } from "react-icons/tb";
 import "./ProximosPartidos.css";
 
 export default function ProximoPartido({ clubId = 1 }) {
@@ -41,6 +42,8 @@ export default function ProximoPartido({ clubId = 1 }) {
                estado,
                pabellon,
                resultado,
+               competicion,
+               url_youtube,
                local (
                  id,
                  nombre,
@@ -115,6 +118,7 @@ export default function ProximoPartido({ clubId = 1 }) {
               </div>
 
               <div className="vs">
+                {match.competicion && <p>{match.competicion}</p>}
                 <div className="resultado">
                   {match.resultado &&
                     (() => {
@@ -161,11 +165,27 @@ export default function ProximoPartido({ clubId = 1 }) {
             </div>
           )}
 
-          {match && match.pabellon && (
-            <p className="pabellon">
-              <FaMapMarkerAlt />
-              <span> {match.pabellon}</span>
-            </p>
+          {match && (
+            <div className="pabellon-youtube">
+              {match.pabellon && (
+                <p className="pabellon">
+                  <FaMapMarkerAlt />
+                  <span> {match.pabellon}</span>
+                </p>
+              )}
+              {match.url_youtube && (
+                <p className="youtube">
+                  <a
+                    href={match.url_youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>Ver en</span>
+                    <TbBrandYoutubeFilled/>
+                  </a>
+                </p>
+              )}
+            </div>
           )}
         </div>
       ))}

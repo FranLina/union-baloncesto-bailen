@@ -32,6 +32,36 @@
   align-items: center; /* vertical */
 }
 
+.cronica-detalle .equipo {
+  font-weight: bold;
+  color: #ffdf00; /* amarillo corporativo */
+}
+
+.cronica-detalle .rival {
+  font-weight: 600;
+  color: #c92a2a; /* rojo para rivales */
+}
+
+.cronica-detalle .fecha {
+  font-weight: 600;
+  color: #ffdf00;
+}
+
+.cronica-detalle .final-four {
+  font-weight: bold;
+  color: #e67700; /* naranja para resaltar */
+}
+
+.cronica-detalle .cta {
+  margin-top: 1rem;
+  padding: 0.5rem 0.75rem;
+  display: inline-block;
+  background: #ffdf00;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
 /* Móvil */
 @media (max-width: 768px) {
   .cronica-detalle {
