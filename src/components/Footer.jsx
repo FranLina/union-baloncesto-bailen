@@ -12,9 +12,9 @@ const Footer = () => {
       </div>
       <div className="footer-container2">
         <h2>Métodos de contacto</h2>
-        <p>unionbailenbaloncesto@gmail.com</p>
-        <p>Pabellón 28 de Febrero, C/ Pablo Picasso</p>
-        <p>23710 Bailén, Jaén</p>
+        <p>ubbailen@hotmail.com</p>
+        <p>Telf: 640 283 475</p>
+        <p>Avda. Manolo Gómez Bur, 12, 23710 Bailén, Jaén</p>
         <div className="social-icons">
           <a
             href="https://www.instagram.com/union_baloncesto_bailen/"

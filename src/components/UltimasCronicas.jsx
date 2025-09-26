@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { stripHtml, generarSlug } from "../utils";
 import "./UltimasCronicas.css";
 
 const UltimasCronicas = () => {
   const [cronicas, setCronicas] = useState([]);
-
-  function stripHtml(html) {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent || "";
-  }
 
   useEffect(() => {
     const fetchCronicas = async () => {
@@ -36,7 +32,7 @@ const UltimasCronicas = () => {
         {cronicas.map((cronica) => (
           <Link
             key={cronica.id}
-            to={`/cronicas/${cronica.id}`}
+            to={`/cronicas/${cronica.id}-${generarSlug(cronica.titulo)}`}
             className="cronica-card"
           >
             <img

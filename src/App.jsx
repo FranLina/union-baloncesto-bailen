@@ -37,7 +37,7 @@ function App() {
               }
             />
             <Route
-              path="/equipos/:id"
+              path="/equipos/:slug"
               element={
                 <PageWrapper>
                   <EquipoDetalle />
@@ -61,7 +61,7 @@ function App() {
               }
             />
             <Route
-              path="/cronicas/:id"
+              path="/cronicas/:slug"
               element={
                 <PageWrapper>
                   <CronicaDetalle />

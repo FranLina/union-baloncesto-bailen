@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { Link } from "react-router-dom";
+import { generarSlug, stripHtml } from "../utils";
 import "./Cronicas.css";
 
 export default function Cronicas() {
   const [cronicas, setCronicas] = useState([]);
-
-  function stripHtml(html) {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent || "";
-  }
 
   useEffect(() => {
     const fetchCronicas = async () => {
@@ -37,7 +33,7 @@ export default function Cronicas() {
               {new Date(cr.fecha).toLocaleDateString("es-ES")}
             </p>
             <p>{stripHtml(cr.contenido).slice(0, 150)}...</p>
-            <Link to={`/cronicas/${cr.id}`}>Leer más</Link>
+            <Link to={`/cronicas/${cr.id}-${generarSlug(cr.titulo)}`}>Leer más</Link>
           </div>
         ))}
       </div>

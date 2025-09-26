@@ -5,7 +5,11 @@ import { TbBrandYoutubeFilled } from "react-icons/tb";
 import "./EquipoDetalle.css";
 
 export default function EquipoDetalle() {
-  const { id } = useParams();
+  const { slug } = useParams();
+
+  // El id está antes del primer guion
+  const id = slug.split("-")[0];
+
   const equipoId = Number(id);
   const [equipo, setEquipo] = useState(null);
   const [partidos, setPartidos] = useState(null);
@@ -127,13 +131,17 @@ export default function EquipoDetalle() {
                   <td data-label="Competición">{par.competicion}</td>
                   <td
                     data-label="Local"
-                    className={par.local?.id === equipoId ? "equipo-negrita" : ""}
+                    className={
+                      par.local?.id === equipoId ? "equipo-negrita" : ""
+                    }
                   >
                     {par.local?.nombre}
                   </td>
                   <td
                     data-label="Visitante"
-                    className={par.visitante?.id === equipoId ? "equipo-negrita" : ""}
+                    className={
+                      par.visitante?.id === equipoId ? "equipo-negrita" : ""
+                    }
                   >
                     {par.visitante?.nombre}
                   </td>

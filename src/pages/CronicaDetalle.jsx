@@ -10,8 +10,11 @@ import FormatearHtmlToTexto from "../components/FormatearHtmlToTexto";
 import "./CronicaDetalle.css";
 
 export default function CronicaDetalle() {
-  const { id } = useParams();
+  const { slug  } = useParams();
   const [cronica, setCronica] = useState(null);
+
+  // El id está antes del primer guion
+  const id = slug.split("-")[0];
 
   useEffect(() => {
     const fetchCronica = async () => {
