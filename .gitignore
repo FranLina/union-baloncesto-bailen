@@ -28,6 +28,3 @@ dist-ssr
 # Build
 dist/
 .vite/
-
-# Archivos generados
-/public/sitemap.xml
