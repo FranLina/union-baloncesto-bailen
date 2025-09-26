@@ -17,9 +17,17 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .env
+.env.local
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Build
+dist/
+.vite/
+
+# Archivos generados
+/public/sitemap.xml

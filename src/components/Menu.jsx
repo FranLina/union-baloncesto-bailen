@@ -29,7 +29,7 @@ export default function Menu() {
 
   return (
     <nav className={`navbar ${visible ? "show" : "hide"}`}>
-      <img className="navbar-logo" src="/ubb-escudo.png" alt=""></img>
+      <img className="navbar-logo" src="/ubb-escudo.png" alt="UBBailen Escudo"></img>
       <div className="hamburger" onClick={() => setMobileOpen(!mobileOpen)}>
         &#9776;
       </div>
