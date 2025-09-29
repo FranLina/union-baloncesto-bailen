@@ -12,7 +12,7 @@ export default function ProximoPartido({ clubId = 1 }) {
   useEffect(() => {
     let mounted = true;
 
-    async function fetchProximoPartidoPorEquipo() {
+    async function fetchUltimoPartidoPorEquipo() {
       setLoading(true);
       setError(null);
 
@@ -31,7 +31,7 @@ export default function ProximoPartido({ clubId = 1 }) {
 
         const hoy = new Date().toISOString().split("T")[0];
 
-        // 2) Para cada equipo, buscar el próximo partido donde participe (local o visitante)
+        // 2) Para cada equipo, buscar el ultimo partido donde participe (local o visitante)
         const promises = equipos.map(async (team) => {
           const { data: partidos, error: errPart } = await supabase
             .from("partidos")
@@ -56,8 +56,8 @@ export default function ProximoPartido({ clubId = 1 }) {
                )`
             )
             .or(`local.eq.${team.id},visitante.eq.${team.id}`)
-            .gte("fecha", hoy)
-            .order("fecha", { ascending: true })
+            .lte("fecha", hoy) // partidos anteriores o iguales a hoy
+            .order("fecha", { ascending: false }) // más reciente primero
             .limit(1);
 
           if (errPart) {
@@ -89,21 +89,21 @@ export default function ProximoPartido({ clubId = 1 }) {
 
         if (mounted) setResults(all);
       } catch (err) {
-        console.error("Error en ProximoPartido:", err);
+        console.error("Error en UltimoPartido:", err);
         if (mounted) setError(err.message || String(err));
       } finally {
         if (mounted) setLoading(false);
       }
     }
 
-    fetchProximoPartidoPorEquipo();
+    fetchUltimoPartidoPorEquipo();
 
     return () => {
       mounted = false;
     };
   }, [clubId]);
 
-  if (loading) return <p>Cargando próximos partidos…</p>;
+  if (loading) return <p>Cargando últimos partidos…</p>;
   if (error) return <p>Error: {error}</p>;
   if (!results.length) return <p>No hay equipos o partidos programados.</p>;
 
@@ -119,7 +119,7 @@ export default function ProximoPartido({ clubId = 1 }) {
 
           {!mErr && !match && (
             <p className="sin-partido">
-              No hay partido próximo para este equipo
+              No hay partido para este equipo
             </p>
           )}
 

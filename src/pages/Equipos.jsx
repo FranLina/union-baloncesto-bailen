@@ -15,6 +15,22 @@ export default function Equipos() {
       if (error) {
         console.error("Error cargando equipos:", error.message);
       } else {
+         // Orden personalizado por categoría
+        const ordenCategorias = {
+          Senior: 1,
+          Junior: 2,
+          Cadete: 3,
+          Infantil: 4,
+          Mini: 5,
+          Baby: 6,
+        };
+
+        data.sort((a, b) => {
+          return (
+            (ordenCategorias[a.categoria] ?? 999) -
+            (ordenCategorias[b.categoria] ?? 999)
+          );
+        });
         setEquipos(data);
       }
     }

@@ -1,6 +1,6 @@
 .lista-partidos {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 3rem;
 }
@@ -11,6 +11,9 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 1rem;
   max-width: 720px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .card h4 {
@@ -87,7 +90,7 @@
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0 0 10px 10px;
-  margin-top: 8px;
+  margin-top: auto;
   text-align: center;
 }
 
