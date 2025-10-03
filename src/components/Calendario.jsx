@@ -57,6 +57,9 @@ export default function Calendario({ partidos }) {
         events={eventos}
         locale={esLocale}
         firstDay={1}
+        contentHeight="auto"
+        expandRows={true}
+        fixedWeekCount={false}
         buttonText={{
           today: "Hoy",
           month: "Mes",
