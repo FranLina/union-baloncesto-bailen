@@ -11,6 +11,9 @@
     "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.19",
+    "@fullcalendar/react": "^6.1.19",
+    "@fullcalendar/timegrid": "^6.1.19",
     "@supabase/supabase-js": "^2.57.4",
     "dompurify": "^3.2.7",
     "dotenv": "^17.2.2",

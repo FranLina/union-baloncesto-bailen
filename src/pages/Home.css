@@ -11,18 +11,9 @@
   font-size: 1rem;
 }
 
-.home span{
-    font-weight: bold;
-    color: #ffdf00;
-}
-
 .home .amarillo {
   color: #ffdf00;
   font-weight: bold;
-}
-
-.home .subrayado {
-  text-decoration: underline;
 }
 
 /* Móvil */

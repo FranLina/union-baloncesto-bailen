@@ -39,6 +39,24 @@ async function generarSitemap() {
 
     const urls = [{ loc: `${baseUrl}/`, priority: "1.0", changefreq: "daily" }];
 
+    urls.push({
+      loc: `${baseUrl}/cronicas`,
+      priority: "1.0",
+      changefreq: "daily",
+    });
+
+    urls.push({
+      loc: `${baseUrl}/equipos`,
+      priority: "1.0",
+      changefreq: "daily",
+    });
+
+    urls.push({
+      loc: `${baseUrl}/partidos`,
+      priority: "1.0",
+      changefreq: "daily",
+    });
+
     // Equipos
     equipos.forEach((eq) => {
       urls.push({
