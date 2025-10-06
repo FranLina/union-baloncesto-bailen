@@ -19,17 +19,18 @@
   line-height: 1.6;
 }
 
-.cronica-detalle .fotos img {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 10px;
-  margin-left: 0;
-}
-
 .swiper-slide {
   display: flex;
-  justify-content: center; /* horizontal */
-  align-items: center; /* vertical */
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  object-fit: contain;
 }
 
 .cronica-detalle .equipo {
@@ -39,7 +40,7 @@
 
 .cronica-detalle .rival {
   font-weight: 600;
-  color: #c92a2a; /* rojo para rivales */
+  color: #2aa4c9; /* azul para rivales */
 }
 
 .cronica-detalle .fecha {
@@ -70,7 +71,7 @@
   .cronica-detalle h1 {
     font-size: 2rem;
   }
-  .cronica-detalle .fotos img {
-    margin: 0;
+  .swiper-slide {
+    height: 300px;
   }
 }

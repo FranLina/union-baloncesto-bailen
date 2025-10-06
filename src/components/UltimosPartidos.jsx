@@ -157,7 +157,7 @@ export default function ProximoPartido({ clubId = 1 }) {
                       );
                     })()}
                 </div>
-                <div>
+                <div className="fecha-hora-dia">
                   <p className="dia">
                   {new Date(match.fecha).toLocaleDateString(
                     "es-ES",
