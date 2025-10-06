@@ -35,9 +35,9 @@
 
 .partido-detalle {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   padding: 1rem;
+  gap: 5px;
 }
 
 .equipo {
@@ -64,8 +64,8 @@
   min-width: 60px;
 }
 
-.vs-text {
-  font-weight: 700;
+.categoria-sexo {
+  text-transform: uppercase;
 }
 
 .resultado {
@@ -77,10 +77,22 @@
   color: #ffdf00;
 }
 
-.fecha {
-  font-size: 12px;
-  color: #444;
-  margin-top: 6px;
+.fecha-hora-dia {
+  text-align: center;
+}
+
+.dia {
+  color: dimgrey;
+  text-transform: capitalize;
+}
+
+.hora {
+  color: dimgrey;
+}
+
+.fecha-partido {
+  color: black;
+  font-weight: bold;
 }
 
 .pabellon-youtube {
@@ -88,7 +100,7 @@
   justify-content: space-around;
   background-color: #ffdf00;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 0 0 10px 10px;
   margin-top: auto;
   text-align: center;
@@ -117,15 +129,20 @@
 
 /* Móvil */
 @media (max-width: 768px) {
-  .resultado {
-    font-size: 1rem;
+  .card {
+    max-width: 370px;
   }
+
+  .resultado {
+    font-size: 1.4rem;
+  }
+
   .lista-partidos {
     grid-template-columns: repeat(1, 1fr);
   }
 
   .equipo-nombre {
-    max-width: 160px;
+    max-width: 120px;
     min-width: 120px;
   }
 }

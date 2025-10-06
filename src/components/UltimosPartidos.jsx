@@ -157,17 +157,26 @@ export default function ProximoPartido({ clubId = 1 }) {
                       );
                     })()}
                 </div>
-                <div className="vs-text">VS</div>
-                <div className="fecha">
-                  {new Date(`${match.fecha}T${match.hora}`).toLocaleDateString(
+                <div>
+                  <p className="dia">
+                  {new Date(match.fecha).toLocaleDateString(
+                    "es-ES",
+                    { weekday: "long" }
+                  )}
+                </p>
+                <p className="fecha-partido">
+                  {new Date(match.fecha).toLocaleDateString(
                     "es-ES",
                     {
                       day: "2-digit",
-                      month: "short",
-                      hour: "2-digit",
-                      minute: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
                     }
                   )}
+                </p>
+                <p className="hora">
+                  {match.hora.slice(0, 5)}
+                </p>
                 </div>
               </div>
 

@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <div className="home">
       <h1>¡¡Bienvenidos!!</h1>
-      <p className="amarillo">
+      <p className="texto-descriptivo amarillo">
         El baloncesto corre por nuestra sangre ¿en la tuya también?
       </p>
 
-      <p>
+      <p className="texto-descriptivo">
         La Unión Baloncesto Bailén nace de un proyecto emprendido con el fin de
         consolidar un club serio que se interesara por cuidar del baloncesto y
         su práctica por la juventud de Bailén. Desde esta web queremos darnos a

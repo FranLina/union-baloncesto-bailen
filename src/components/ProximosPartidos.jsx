@@ -111,7 +111,7 @@ export default function ProximoPartido({ clubId = 1 }) {
     <div className="lista-partidos">
       {results.map(({ team, match, error: mErr }) => (
         <div className="card" key={team.id}>
-          <h4>
+          <h4 className="categoria-sexo">
             {team.categoria} {team.sexo}
           </h4>
 
@@ -157,17 +157,26 @@ export default function ProximoPartido({ clubId = 1 }) {
                       );
                     })()}
                 </div>
-                <div className="vs-text">VS</div>
-                <div className="fecha">
-                  {new Date(`${match.fecha}T${match.hora}`).toLocaleDateString(
+                <div className="fecha-hora-dia">
+                  <p className="dia">
+                  {new Date(match.fecha).toLocaleDateString(
+                    "es-ES",
+                    { weekday: "long" }
+                  )}
+                </p>
+                <p className="fecha-partido">
+                  {new Date(match.fecha).toLocaleDateString(
                     "es-ES",
                     {
                       day: "2-digit",
-                      month: "short",
-                      hour: "2-digit",
-                      minute: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
                     }
                   )}
+                </p>
+                <p className="hora">
+                  {match.hora.slice(0, 5)}
+                </p>
                 </div>
               </div>
 
@@ -205,6 +214,7 @@ export default function ProximoPartido({ clubId = 1 }) {
             </div>
           )}
         </div>
+        
       ))}
     </div>
   );
