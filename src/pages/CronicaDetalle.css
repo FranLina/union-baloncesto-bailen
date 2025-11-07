@@ -14,7 +14,6 @@
 
 .cronica-detalle p {
   margin: 20px 0;
-  text-align: justify;
   white-space: pre-line;
   line-height: 1.6;
 }
@@ -73,5 +72,9 @@
   }
   .swiper-slide {
     height: 300px;
+  }
+  .cronica-detalle p {
+    line-height: 1.4;
+    font-size: .9rem;
   }
 }

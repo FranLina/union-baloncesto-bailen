@@ -118,9 +118,7 @@ export default function ProximoPartido({ clubId = 1 }) {
           {mErr && <p className="error">Error cargando partido</p>}
 
           {!mErr && !match && (
-            <p className="sin-partido">
-              No hay partido para este equipo
-            </p>
+            <p className="sin-partido">No hay partido para este equipo</p>
           )}
 
           {match && (
@@ -159,24 +157,18 @@ export default function ProximoPartido({ clubId = 1 }) {
                 </div>
                 <div className="fecha-hora-dia">
                   <p className="dia">
-                  {new Date(match.fecha).toLocaleDateString(
-                    "es-ES",
-                    { weekday: "long" }
-                  )}
-                </p>
-                <p className="fecha-partido">
-                  {new Date(match.fecha).toLocaleDateString(
-                    "es-ES",
-                    {
+                    {new Date(match.fecha).toLocaleDateString("es-ES", {
+                      weekday: "long",
+                    })}
+                  </p>
+                  <p className="fecha-partido">
+                    {new Date(match.fecha).toLocaleDateString("es-ES", {
                       day: "2-digit",
                       month: "2-digit",
                       year: "numeric",
-                    }
-                  )}
-                </p>
-                <p className="hora">
-                  {match.hora.slice(0, 5)}
-                </p>
+                    })}
+                  </p>
+                  <p className="hora">{match.hora.slice(0, 5)}</p>
                 </div>
               </div>
 
@@ -194,9 +186,23 @@ export default function ProximoPartido({ clubId = 1 }) {
           {match && (
             <div className="pabellon-youtube">
               {match.pabellon && (
-                <p className="pabellon">
+                <p
+                  className="pabellon"
+                  onClick={() => {
+                    const query = encodeURIComponent(match.pabellon);
+                    window.open(
+                      `https://www.google.com/maps/search/?api=1&query=${query}`,
+                      "_blank"
+                    );
+                  }}
+                  style={{ cursor: "pointer" }}
+                  title="Ver en Google Maps"
+                >
                   <FaMapMarkerAlt />
-                  <span> {match.pabellon}</span>
+                  {" "}
+                  <span style={{ textDecoration: "underline" }}>
+                    {match.pabellon}
+                  </span>
                 </p>
               )}
               {match.url_youtube && (

@@ -142,9 +142,24 @@ export default function Calendario({ partidos }) {
             </div>
             <div className="modal-pabellon-youtube">
               {partidoSeleccionado.pabellon && (
-                <p className="modal-pabellon">
-                  <FaMapMarkerAlt />
-                  <span> {partidoSeleccionado.pabellon}</span>
+                <p
+                  className="modal-pabellon"
+                  onClick={() => {
+                    const query = encodeURIComponent(
+                      partidoSeleccionado.pabellon
+                    );
+                    window.open(
+                      `https://www.google.com/maps/search/?api=1&query=${query}`,
+                      "_blank"
+                    );
+                  }}
+                  style={{ cursor: "pointer" }}
+                  title="Ver en Google Maps"
+                >
+                  <FaMapMarkerAlt />{" "}
+                  <span style={{ textDecoration: "underline" }}>
+                    {partidoSeleccionado.pabellon}
+                  </span>
                 </p>
               )}
               {partidoSeleccionado.url_youtube && (
