@@ -1,0 +1,51 @@
+.clasificacion-container {
+  margin-top: 2rem;
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.clasificacion-container h3 {
+  margin: 10px;
+}
+
+.clasificacion-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.clasificacion-table th,
+.clasificacion-table td {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.escudo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .clasificacion-table {
+    font-size: 0.7rem;
+    table-layout: fixed;
+  }
+
+  /* Ocultar la columna "Equipo" */
+  .clasificacion-table td:nth-child(3),
+  .clasificacion-table th:nth-child(3) {
+    display: none;
+  }
+
+  .clasificacion-table th,
+  .clasificacion-table td {
+    padding: 0.3rem 0rem;
+  }
+
+  .escudo {
+    width: 25px;
+    height: 25px;
+  }
+}

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
 import "./EquipoDetalle.css";
+import Clasificacion from "../components/Clasificacion";
 
 export default function EquipoDetalle() {
   const { slug } = useParams();
@@ -13,6 +14,7 @@ export default function EquipoDetalle() {
   const equipoId = Number(id);
   const [equipo, setEquipo] = useState(null);
   const [partidos, setPartidos] = useState(null);
+  const [clasificacion, setClasificacion] = useState(null);
 
   useEffect(() => {
     async function fetchEquipo() {
@@ -65,6 +67,47 @@ export default function EquipoDetalle() {
     fetchPartidosEquipo();
   }, [id]);
 
+  useEffect(() => {
+    if (!equipo) return;
+
+    async function fetchClasificacion() {
+      const { data, error } = await supabase
+        .from("clasificacion")
+        .select(
+          `
+        id,
+        categoria,
+        sexo,
+        ganados,
+        perdidos,
+        puntos_favor,
+        puntos_contra,
+        puntos_totales,
+        equipos (
+          id,
+          nombre,
+          club,
+          club (
+            id,
+            nombre,
+            escudo
+          )
+        )
+      `
+        )
+        .eq("categoria", equipo.categoria)
+        .eq("sexo", equipo.sexo)
+        .order("puntos_totales", { ascending: false })
+        .order("puntos_favor", { ascending: false })
+        .order("puntos_contra", { ascending: true });
+
+      if (error) console.error("Error cargando clasificación:", error);
+      else setClasificacion(data);
+    }
+
+    fetchClasificacion();
+  }, [equipo]);
+
   function formatDateTime(dateString) {
     const d = new Date(dateString);
     if (isNaN(d)) return "Fecha inválida";
@@ -109,6 +152,8 @@ export default function EquipoDetalle() {
           </ul>
         </div>
       )}
+
+      {clasificacion && <Clasificacion clasificacion={clasificacion} />}
 
       {partidos && (
         <div className="calendario">
