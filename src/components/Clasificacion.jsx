@@ -30,7 +30,7 @@ export default function Clasificacion({ clasificacion }) {
                   <img
                     src={row.equipos.club.escudo}
                     alt={row.equipos.nombre}
-                    className="escudo"
+                    className="escudo-clasificacion"
                   />
                 )}
               </td>
