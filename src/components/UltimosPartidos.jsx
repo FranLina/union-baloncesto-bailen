@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { TbBrandYoutubeFilled } from "react-icons/tb";
+import { generarSlug } from "../utils";
 import "./ProximosPartidos.css";
 
 export default function ProximoPartido({ clubId = 1 }) {
@@ -65,7 +66,20 @@ export default function ProximoPartido({ clubId = 1 }) {
             return { team, match: null, error: errPart };
           }
 
-          return { team, match: partidos?.[0] ?? null };
+          const partido = partidos?.[0] ?? null;
+
+          if (!partido) {
+            return { team, match: null };
+          }
+
+          // Buscar si tiene crónica
+          const { data: cronica } = await supabase
+            .from("cronicas")
+            .select("id, titulo")
+            .eq("partido_id", partido.id)
+            .maybeSingle();
+
+          return { team, match: partido, cronica };
         });
 
         const all = await Promise.all(promises);
@@ -109,8 +123,17 @@ export default function ProximoPartido({ clubId = 1 }) {
 
   return (
     <div className="lista-partidos">
-      {results.map(({ team, match, error: mErr }) => (
-        <div className="card" key={team.id}>
+      {results.map(({ team, match, cronica, error: mErr }) => (
+        <div
+          className={`card ${cronica ? "clickable" : ""}`}
+          key={team.id}
+          onClick={() => {
+            if (cronica)
+              window.location.href = `/cronicas/${cronica.id}-${generarSlug(
+                cronica.titulo
+              )}`;
+          }}
+        >
           <h4>
             {team.categoria} {team.sexo}
           </h4>
@@ -198,8 +221,7 @@ export default function ProximoPartido({ clubId = 1 }) {
                   style={{ cursor: "pointer" }}
                   title="Ver en Google Maps"
                 >
-                  <FaMapMarkerAlt />
-                  {" "}
+                  <FaMapMarkerAlt />{" "}
                   <span style={{ textDecoration: "underline" }}>
                     {match.pabellon}
                   </span>

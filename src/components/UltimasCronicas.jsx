@@ -13,7 +13,7 @@ const UltimasCronicas = () => {
         .from("cronicas")
         .select("*")
         .order("fecha", { ascending: false }) // las más recientes primero
-        .limit(3); // solo 3
+        .limit(4); // solo 4
 
       if (error) {
         console.error("Error cargando crónicas:", error);

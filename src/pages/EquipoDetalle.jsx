@@ -96,13 +96,26 @@ export default function EquipoDetalle() {
       `
         )
         .eq("categoria", equipo.categoria)
-        .eq("sexo", equipo.sexo)
-        .order("puntos_totales", { ascending: false })
-        .order("puntos_favor", { ascending: false })
-        .order("puntos_contra", { ascending: true });
+        .eq("sexo", equipo.sexo);
 
-      if (error) console.error("Error cargando clasificación:", error);
-      else setClasificacion(data);
+      if (error) {
+        console.error("Error cargando clasificación:", error);
+        return;
+      }
+
+      // Ordenar en el frontend
+      const sorted = data.sort((a, b) => {
+        // 1. Primero por puntos totales
+        if (b.puntos_totales !== a.puntos_totales)
+          return b.puntos_totales - a.puntos_totales;
+
+        // 2. Luego por diferencia PF - PC
+        const diffA = a.puntos_favor - a.puntos_contra;
+        const diffB = b.puntos_favor - b.puntos_contra;
+        return diffB - diffA;
+      });
+
+      setClasificacion(sorted);
     }
 
     fetchClasificacion();
