@@ -1,9 +1,13 @@
+.home {
+  margin: 0 150px;
+}
+
 .home h1 {
   font-size: 4rem;
 }
 
-.home h2{
-    margin-top: 30px;
+.home h2 {
+  margin-top: 30px;
 }
 
 .home .texto-descriptivo {
@@ -18,6 +22,9 @@
 
 /* Móvil */
 @media (max-width: 768px) {
+  .home {
+    margin: 10px 25px;
+  }
   .home h1 {
     font-size: 2.5rem;
   }

@@ -124,16 +124,7 @@ export default function ProximoPartido({ clubId = 1 }) {
   return (
     <div className="lista-partidos">
       {results.map(({ team, match, cronica, error: mErr }) => (
-        <div
-          className={`card ${cronica ? "clickable" : ""}`}
-          key={team.id}
-          onClick={() => {
-            if (cronica)
-              window.location.href = `/cronicas/${cronica.id}-${generarSlug(
-                cronica.titulo
-              )}`;
-          }}
-        >
+        <div className={`card ${cronica ? "clickable" : ""}`} key={team.id}>
           <h4>
             {team.categoria} {team.sexo}
           </h4>
@@ -145,7 +136,15 @@ export default function ProximoPartido({ clubId = 1 }) {
           )}
 
           {match && (
-            <div className="partido-detalle">
+            <div
+              className="partido-detalle"
+              onClick={() => {
+                if (cronica)
+                  window.location.href = `/cronicas/${cronica.id}-${generarSlug(
+                    cronica.titulo
+                  )}`;
+              }}
+            >
               <div className="equipo">
                 <img
                   src={match.local?.club?.escudo}

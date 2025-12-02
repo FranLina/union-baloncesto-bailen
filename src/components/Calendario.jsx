@@ -43,7 +43,7 @@ export default function Calendario({ partidos }) {
   };
 
   return (
-    <>
+    <div className="calendar-container">
       <div className="leyenda-equipos">
         <p className="leyenda-senior">Senior Masculino</p>
         <p className="leyenda-cadete">Cadete Preferente</p>
@@ -181,6 +181,6 @@ export default function Calendario({ partidos }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -16,7 +16,7 @@
   flex-direction: column;
 }
 
-.card.clickable {
+.card.clickable{
   cursor: pointer;
   transition: transform 0.15s ease;
 }

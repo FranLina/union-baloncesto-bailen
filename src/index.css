@@ -26,7 +26,9 @@ a:hover {
   padding: 0;
 }
 
-body, html, #root {
+body,
+html,
+#root {
   height: 100%;
 }
 
@@ -65,7 +67,14 @@ button:focus-visible {
 .content {
   flex: 1;
   margin: 0 auto;
-  margin-top: 210px;
+  margin-top: 200px;
   margin-bottom: 40px;
-  width: 80%;
+  width: 100%;
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+  .content {
+    margin-top: 160px;
+  }
 }

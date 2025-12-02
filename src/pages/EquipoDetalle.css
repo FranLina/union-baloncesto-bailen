@@ -1,5 +1,6 @@
 .equipo-detalle {
   text-align: center;
+  margin: 0 100px;
 }
 
 .container-equipo {
@@ -117,6 +118,11 @@
 
 /* Móvil */
 @media (max-width: 768px) {
+
+  .equipo-detalle{
+    margin: 0 15px;
+  }
+
   .equipo-detalle h1 {
     font-size: 2rem;
   }

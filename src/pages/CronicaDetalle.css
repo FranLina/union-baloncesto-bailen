@@ -1,8 +1,8 @@
 .cronica-detalle {
-  margin: 0 180px;
   border: solid white 5px;
   border-radius: 10px;
   padding: 10px 20px;
+  margin: 40px 100px;
 }
 
 .cronica-detalle h3 {
@@ -65,16 +65,21 @@
 /* Móvil */
 @media (max-width: 768px) {
   .cronica-detalle {
-    margin: 0;
+    border: solid white 2px;
+    padding: 10px 10px;
+    margin: 15px 10px 0 10px;
   }
   .cronica-detalle h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+  .cronica-detalle h3 {
+    font-size: 0.8rem;
   }
   .swiper-slide {
     height: 300px;
   }
   .cronica-detalle p {
     line-height: 1.4;
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }

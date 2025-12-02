@@ -1,3 +1,7 @@
+.calendar-container {
+  margin: 0 60px;
+}
+
 .fc .fc-view-harness {
   background-color: white;
   border-radius: 8px;
@@ -48,13 +52,14 @@
   gap: 80px;
   margin-bottom: 20px;
   font-weight: bold;
+  text-align: center;
 }
 
 .leyenda-equipos p {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 4px 0;
+  margin: 4px auto;
 }
 
 .leyenda-equipos p::before {
@@ -217,6 +222,9 @@
 
 /* Móvil */
 @media (max-width: 768px) {
+  .calendar-container {
+    margin: 0 15px;
+  }
   .leyenda-equipos {
     flex-direction: column;
     gap: 10px;
