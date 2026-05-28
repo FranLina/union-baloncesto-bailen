@@ -14,14 +14,17 @@ export default function EquipoDetalle() {
   const equipoId = Number(id);
   const [equipo, setEquipo] = useState(null);
   const [partidos, setPartidos] = useState(null);
+  const [temporadas, setTemporadas] = useState([]);
   const [clasificacion, setClasificacion] = useState(null);
+  const [temporadaSeleccionada, setTemporadaSeleccionada] = useState(null);
+  const [competicionSeleccionada, setCompeticionSeleccionada] = useState(null);
 
   useEffect(() => {
     async function fetchEquipo() {
       const { data, error } = await supabase
         .from("equipos")
         .select(
-          "id, nombre, categoria, sexo, foto_equipo, descripcion,entrenamientos"
+          "id, nombre, categoria, sexo, foto_equipo, descripcion,entrenamientos",
         )
         .eq("id", id)
         .single();
@@ -33,7 +36,10 @@ export default function EquipoDetalle() {
       }
     }
     fetchEquipo();
+  }, [id]);
 
+  useEffect(() => {
+    if (!equipo || !temporadaSeleccionada) return;
     async function fetchPartidosEquipo() {
       const { data, error } = await supabase
         .from("partidos")
@@ -44,8 +50,12 @@ export default function EquipoDetalle() {
                estado,
                pabellon,
                resultado,
-               competicion,
+               jornada,
                url_youtube,
+               temporada_id(
+                nombre,
+                activa
+               ),
                local (
                  id,
                  nombre
@@ -53,9 +63,10 @@ export default function EquipoDetalle() {
                visitante (
                  id,
                  nombre
-               )`
+               )`,
         )
         .or(`local.eq.${id},visitante.eq.${id}`)
+        .eq("temporada_id", temporadaSeleccionada)
         .order("fecha", { ascending: true });
 
       if (error) {
@@ -65,38 +76,74 @@ export default function EquipoDetalle() {
       }
     }
     fetchPartidosEquipo();
-  }, [id]);
+  }, [equipo, id, temporadaSeleccionada]);
 
   useEffect(() => {
     if (!equipo) return;
+
+    async function fetchCompeticion() {
+      const { data, error } = await supabase
+        .from("competiciones")
+        .select("id, nombre, categoria, sexo")
+        .eq("categoria", equipo.categoria)
+        .eq("sexo", equipo.sexo)
+        .single();
+      if (error) {
+        console.error("Error cargando competición:", error);
+      } else {
+        setCompeticionSeleccionada(data.id);
+      }
+    }
+    fetchCompeticion();
+
+    async function fetchTemporadas() {
+      const { data, error } = await supabase
+        .from("temporadas")
+        .select("id, nombre, activa")
+        .order("nombre", { ascending: false });
+      if (error) {
+        console.error("Error cargando temporadas:", error);
+      } else {
+        setTemporadas(data);
+
+        const activa = data.find((t) => t.activa === true);
+
+        if (activa) {
+          setTemporadaSeleccionada(activa.id);
+        }
+      }
+    }
+    fetchTemporadas();
+  }, [equipo]);
+
+  useEffect(() => {
+    if (!equipo || !competicionSeleccionada) return;
 
     async function fetchClasificacion() {
       const { data, error } = await supabase
         .from("clasificacion")
         .select(
           `
+    id,
+    ganados,
+    perdidos,
+    puntos_favor,
+    puntos_contra,
+    puntos_totales,
+    equipos (
+      id,
+      nombre,
+      club,
+      club (
         id,
-        categoria,
-        sexo,
-        ganados,
-        perdidos,
-        puntos_favor,
-        puntos_contra,
-        puntos_totales,
-        equipos (
-          id,
-          nombre,
-          club,
-          club (
-            id,
-            nombre,
-            escudo
-          )
+        nombre,
+        escudo
+      )
+    )
+  `,
         )
-      `
-        )
-        .eq("categoria", equipo.categoria)
-        .eq("sexo", equipo.sexo);
+        .eq("competicion_id", competicionSeleccionada)
+        .eq("temporada_id", temporadaSeleccionada);
 
       if (error) {
         console.error("Error cargando clasificación:", error);
@@ -106,8 +153,9 @@ export default function EquipoDetalle() {
       // Ordenar en el frontend
       const sorted = data.sort((a, b) => {
         // 1. Primero por puntos totales
-        if (b.puntos_totales !== a.puntos_totales)
+        if (b.puntos_totales !== a.puntos_totales) {
           return b.puntos_totales - a.puntos_totales;
+        }
 
         // 2. Luego por diferencia PF - PC
         const diffA = a.puntos_favor - a.puntos_contra;
@@ -119,7 +167,7 @@ export default function EquipoDetalle() {
     }
 
     fetchClasificacion();
-  }, [equipo]);
+  }, [equipo, competicionSeleccionada, temporadaSeleccionada]);
 
   function formatDateTime(dateString) {
     const d = new Date(dateString);
@@ -166,9 +214,25 @@ export default function EquipoDetalle() {
         </div>
       )}
 
+      {temporadas && temporadas.length > 0 && (
+        <div className="selector-temporada">
+          <span>Selecciona temporada: </span>
+          <select
+            value={temporadaSeleccionada ?? ""}
+            onChange={(e) => setTemporadaSeleccionada(Number(e.target.value))}
+          >
+            {temporadas.map((temporada) => (
+              <option key={temporada.id} value={temporada.id}>
+                {temporada.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       {clasificacion && <Clasificacion clasificacion={clasificacion} />}
 
-      {partidos && (
+      {partidos && partidos.length > 0 && (
         <div className="calendario">
           <h3>Calendario</h3>
           <table className="calendario-partidos">
@@ -186,7 +250,7 @@ export default function EquipoDetalle() {
             <tbody>
               {partidos.map((par, i) => (
                 <tr key={i}>
-                  <td data-label="Competición">{par.competicion}</td>
+                  <td data-label="Jornada">{par.jornada}</td>
                   <td
                     data-label="Local"
                     className={

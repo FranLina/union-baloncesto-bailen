@@ -4,11 +4,12 @@ import { FaXTwitter } from "react-icons/fa6";
 import "./Footer.css";
 
 const Footer = () => {
+  const fecha = new Date(); 
   return (
     <footer className="footer">
       <div className="footer-container1">
         <img className="footer-logo" src="/ubb-escudo.png" alt="UBBailen Escudo"></img>
-        <p>© 2025 Club de Baloncesto. Todos los derechos reservados.</p>
+        <p>© {fecha.getFullYear()} Club de Baloncesto. Todos los derechos reservados.</p>
       </div>
       <div className="footer-container2">
         <h2>Métodos de contacto</h2>

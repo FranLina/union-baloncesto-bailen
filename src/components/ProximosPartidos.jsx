@@ -42,7 +42,7 @@ export default function ProximoPartido({ clubId = 1 }) {
                estado,
                pabellon,
                resultado,
-               competicion,
+               jornada,
                url_youtube,
                local (
                  id,
@@ -135,7 +135,7 @@ export default function ProximoPartido({ clubId = 1 }) {
               </div>
 
               <div className="vs">
-                {match.competicion && <p>{match.competicion}</p>}
+                {match.jornada && <p>{match.jornada}</p>}
                 <div className="resultado">
                   {match.resultado &&
                     (() => {
