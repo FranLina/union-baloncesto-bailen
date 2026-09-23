@@ -75,6 +75,10 @@
   background-color: #1e90ff;
 }
 
+.leyenda-junior::before {
+  background-color: #ff4500;
+}
+
 .leyenda-cadete::before {
   background-color: #32cd32;
 }

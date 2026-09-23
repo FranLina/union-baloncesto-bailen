@@ -78,43 +78,54 @@ export default function EquipoDetalle() {
     fetchPartidosEquipo();
   }, [equipo, id, temporadaSeleccionada]);
 
+  // Cargar temporadas
   useEffect(() => {
-    if (!equipo) return;
+  async function fetchTemporadas() {
+    const { data, error } = await supabase
+      .from("temporadas")
+      .select("id, nombre, activa")
+      .order("nombre", { ascending: false });
 
-    async function fetchCompeticion() {
-      const { data, error } = await supabase
-        .from("competiciones")
-        .select("id, nombre, categoria, sexo")
-        .eq("categoria", equipo.categoria)
-        .eq("sexo", equipo.sexo)
-        .single();
-      if (error) {
-        console.error("Error cargando competición:", error);
-      } else {
-        setCompeticionSeleccionada(data.id);
-      }
+    if (error) {
+      console.error("Error cargando temporadas:", error);
+      return;
     }
-    fetchCompeticion();
 
-    async function fetchTemporadas() {
-      const { data, error } = await supabase
-        .from("temporadas")
-        .select("id, nombre, activa")
-        .order("nombre", { ascending: false });
-      if (error) {
-        console.error("Error cargando temporadas:", error);
-      } else {
-        setTemporadas(data);
+    setTemporadas(data);
 
-        const activa = data.find((t) => t.activa === true);
+    const activa = data.find((t) => t.activa === true);
 
-        if (activa) {
-          setTemporadaSeleccionada(activa.id);
-        }
-      }
+    if (activa) {
+      setTemporadaSeleccionada(activa.id);
     }
-    fetchTemporadas();
-  }, [equipo]);
+  }
+
+  fetchTemporadas();
+  }, []);
+
+  // cargar competicion
+  useEffect(() => {
+  if (!equipo || !temporadaSeleccionada) return;
+
+  async function fetchCompeticion() {
+    const { data, error } = await supabase
+      .from("competiciones")
+      .select("id, nombre, categoria, sexo, temporada_id")
+      .eq("categoria", equipo.categoria)
+      .eq("sexo", equipo.sexo)
+      .eq("temporada_id", temporadaSeleccionada)
+      .single();
+
+    if (error) {
+      console.error("Error cargando competición:", error);
+      setCompeticionSeleccionada(null);
+    } else {
+      setCompeticionSeleccionada(data.id);
+    }
+  }
+
+  fetchCompeticion();
+  }, [equipo, temporadaSeleccionada]);
 
   useEffect(() => {
     if (!equipo || !competicionSeleccionada) return;

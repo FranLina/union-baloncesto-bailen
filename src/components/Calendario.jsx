@@ -46,10 +46,11 @@ export default function Calendario({ partidos }) {
     <div className="calendar-container">
       <div className="leyenda-equipos">
         <p className="leyenda-senior">Senior Masculino</p>
+        <p className="leyenda-junior">Junior Masculino</p>
         <p className="leyenda-cadete">Cadete Preferente</p>
         <p className="leyenda-infantil">Infantil Preferente</p>
         <p className="leyenda-mini">MiniBasket Preferente</p>
-        <p className="leyenda-baby">BaybyBasket Preferente</p>
+        {/* <p className="leyenda-baby">BabyBasket Preferente</p> */}
       </div>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin]}

@@ -30,7 +30,7 @@ export default function Partidos() {
          estado,
          pabellon,
          resultado,
-         competicion,
+         competicion_id,
          url_youtube,
          local (
            id,
