@@ -11,7 +11,7 @@ const UltimasCronicas = () => {
     const fetchCronicas = async () => {
       const { data, error } = await supabase
         .from("cronicas")
-        .select("*")
+        .select("id, titulo, fecha, contenido, fotos")
         .order("fecha", { ascending: false }) // las más recientes primero
         .limit(4); // solo 4
 
@@ -39,6 +39,8 @@ const UltimasCronicas = () => {
               src={cronica.fotos?.[0] || "/ubb-escudo.jpg"}
               alt={cronica.titulo}
               className="cronica-img"
+              loading="lazy"
+              decoding="async"
             />
             <h3>{cronica.titulo}</h3>
             <p>{stripHtml(cronica.contenido).slice(0, 150)}...</p>

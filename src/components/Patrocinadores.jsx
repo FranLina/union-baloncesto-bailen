@@ -9,7 +9,7 @@ const Patrocinadores = () => {
     const fetchSponsors = async () => {
       const { data, error } = await supabase
         .from("patrocinadores")
-        .select("*")
+        .select("id, nombre, logo_url, enlace")
         .order("id", { ascending: true });
 
       if (error) {

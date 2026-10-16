@@ -31,6 +31,8 @@ export default function Clasificacion({ clasificacion }) {
                     src={row.equipos.club.escudo}
                     alt={row.equipos.nombre}
                     className="escudo-clasificacion"
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
               </td>

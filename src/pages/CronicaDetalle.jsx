@@ -10,7 +10,7 @@ import FormatearHtmlToTexto from "../components/FormatearHtmlToTexto";
 import "./CronicaDetalle.css";
 
 export default function CronicaDetalle() {
-  const { slug  } = useParams();
+  const { slug } = useParams();
   const [cronica, setCronica] = useState(null);
 
   // El id está antes del primer guion
@@ -35,8 +35,8 @@ export default function CronicaDetalle() {
     <div className="cronica-detalle">
       <h1>{cronica.titulo}</h1>
       <h3>{new Date(cronica.fecha).toLocaleDateString("es-ES")}</h3>
-      
-      <FormatearHtmlToTexto contenido={cronica.contenido}/>
+
+      <FormatearHtmlToTexto contenido={cronica.contenido} />
 
       <div className="fotos">
         <Swiper
@@ -48,7 +48,13 @@ export default function CronicaDetalle() {
         >
           {cronica.fotos?.map((foto, index) => (
             <SwiperSlide key={index}>
-              <img key={index} src={foto} alt={`Foto ${index + 1}`} />
+              <img
+                key={index}
+                src={foto}
+                alt={`Foto ${index + 1}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
             </SwiperSlide>
           ))}
         </Swiper>

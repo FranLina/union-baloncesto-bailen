@@ -206,6 +206,8 @@ export default function EquipoDetalle() {
             src={equipo.foto_equipo}
             alt={equipo.nombre}
             className="detalle-foto"
+            loading="lazy"
+            decoding="async"
           />
         )}
         <div className="detalle-info">

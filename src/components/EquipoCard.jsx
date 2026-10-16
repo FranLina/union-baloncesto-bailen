@@ -15,6 +15,8 @@ export default function EquipoCard({ id, nombre, categoria, sexo, foto }) {
         src={foto || "/ubb-escudo.png"}
         alt={`Foto de ${nombre}`}
         className="equipo-foto"
+        loading="lazy"
+        decoding="async"
       />
       <div className="equipo-info">
         <h3>{nombre}</h3>

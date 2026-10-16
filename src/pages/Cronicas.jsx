@@ -11,7 +11,7 @@ export default function Cronicas() {
     const fetchCronicas = async () => {
       const { data, error } = await supabase
         .from("cronicas")
-        .select("*")
+        .select("id, titulo, fecha, contenido, fotos")
         .order("fecha", { ascending: false });
       if (error) console.error(error);
       else setCronicas(data);
@@ -26,7 +26,7 @@ export default function Cronicas() {
         {cronicas.map((cr) => (
           <div key={cr.id} className="cronica-card">
             {cr.fotos && cr.fotos.length > 0 && (
-              <img src={cr.fotos[0]} alt={cr.titulo} />
+              <img src={cr.fotos[0]} alt={cr.titulo} loading="lazy" decoding="async" />
             )}
             <h2>{cr.titulo}</h2>
             <p className="fecha">
